@@ -1,8 +1,8 @@
 package test
 
 import (
-	tronWallet "github.com/ranjbar-dev/tron-wallet"
-	"github.com/ranjbar-dev/tron-wallet/enums"
+	tronWallet "github.com/amirvalhalla/tron-wallet"
+	"github.com/amirvalhalla/tron-wallet/enums"
 )
 
 var node = enums.SHASTA_NODE

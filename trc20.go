@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ranjbar-dev/tron-wallet/enums"
-	"github.com/ranjbar-dev/tron-wallet/grpcClient"
-	"github.com/ranjbar-dev/tron-wallet/util"
+	"github.com/amirvalhalla/tron-wallet/enums"
+	"github.com/amirvalhalla/tron-wallet/grpcClient"
+	"github.com/amirvalhalla/tron-wallet/util"
 )
 
 const (

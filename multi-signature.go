@@ -4,8 +4,8 @@ import (
 	"crypto/ecdsa"
 	"errors"
 
-	"github.com/ranjbar-dev/tron-wallet/enums"
-	"github.com/ranjbar-dev/tron-wallet/grpcClient"
+	"github.com/amirvalhalla/tron-wallet/enums"
+	"github.com/amirvalhalla/tron-wallet/grpcClient"
 )
 
 func CreateAndBroadcastMultiTransaction(node enums.Node, fromAddressBase58 string, toAddressBase58 string, amountInSun int64, privateKeys []*ecdsa.PrivateKey, _ ecdsa.PrivateKey) (string, error) {

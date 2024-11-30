@@ -7,10 +7,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ranjbar-dev/tron-wallet/enums"
-	"github.com/ranjbar-dev/tron-wallet/grpcClient/proto/api"
+	"github.com/amirvalhalla/tron-wallet/enums"
+	"github.com/amirvalhalla/tron-wallet/grpcClient/proto/api"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/metadata"
 )
 
@@ -27,7 +26,7 @@ type GrpcClient struct {
 	apiKey      string
 }
 
-func GetGrpcClient(node enums.Node) (*GrpcClient, error) {
+func GetGrpcClient(node enums.Node, opts ...grpc.DialOption) (*GrpcClient, error) {
 
 	var err error
 
@@ -36,9 +35,10 @@ func GetGrpcClient(node enums.Node) (*GrpcClient, error) {
 			Address:     string(node),
 			grpcTimeout: 5 * time.Second,
 			apiKey:      os.Getenv("TRON_PRO_API_KEY"),
+			opts:        opts,
 		}
 
-		if e := temp.Start(grpc.WithTransportCredentials(insecure.NewCredentials())); e != nil {
+		if e := temp.Start(temp.opts...); e != nil {
 			err = e
 		}
 
@@ -57,7 +57,7 @@ func (g *GrpcClient) Start(opts ...grpc.DialOption) error {
 	g.Conn, err = grpc.Dial(g.Address, opts...)
 
 	if err != nil {
-		return fmt.Errorf("Connecting GRPC Client: %v", err)
+		return fmt.Errorf("connecting grpc client: %v", err)
 	}
 	g.Client = api.NewWalletClient(g.Conn)
 	return nil

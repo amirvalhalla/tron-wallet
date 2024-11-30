@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	tronWallet "github.com/ranjbar-dev/tron-wallet"
+	tronWallet "github.com/amirvalhalla/tron-wallet"
 	"github.com/stretchr/testify/assert"
 )
 

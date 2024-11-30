@@ -3,12 +3,16 @@ package main
 import (
 	"fmt"
 
-	tronWallet "github.com/ranjbar-dev/tron-wallet"
-	"github.com/ranjbar-dev/tron-wallet/enums"
+	tronWallet "github.com/amirvalhalla/tron-wallet"
+	"github.com/amirvalhalla/tron-wallet/enums"
+	"github.com/amirvalhalla/tron-wallet/grpcClient"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 func main() {
 
+	grpcClient.GetGrpcClient(enums.SHASTA_NODE, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	//c, _ := grpcClient.GetGrpcClient(enums.SHASTA_NODE)
 	//
 	w, _ := tronWallet.CreateTronWallet(enums.SHASTA_NODE, "88414dbb373a211bc157265a267f3de6a4cec210f3a5da12e89630f2c447ad27")
