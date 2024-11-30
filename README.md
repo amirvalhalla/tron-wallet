@@ -13,7 +13,7 @@ go get github.com/amirvalhalla/tron-wallet@v1.0.0
 ```
 
 ## grpc dial option usage
-Tip: make sure you will call it at first point of you're program before calling any methods of this package!
+Tip: make sure you will call it at first point of your program before calling any methods of this package!
 
 ```go
 	grpcClient.GetGrpcClient(enums.SHASTA_NODE, grpc.WithTransportCredentials(insecure.NewCredentials()))
