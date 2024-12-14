@@ -22,7 +22,7 @@ func estimateTrc10TransactionFee(node enums.Node, privateKey *ecdsa.PrivateKey, 
 	temp := (len(singedTx.Transaction.Signature[0]) + len(singedTx.Transaction.RawData.String())) / 2
 	bandwidthNeed := int64(temp + 68)
 
-	c, _ := grpcClient.GetGrpcClient(enums.SHASTA_NODE)
+	c, _ := grpcClient.GetGrpcClient(node)
 
 	res, err := c.GetAccountResource(fromAddressBase58)
 	if err != nil {
