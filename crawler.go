@@ -114,7 +114,7 @@ func (c *Crawler) getBlockData(wg *sync.WaitGroup, client *grpcClient.GrpcClient
 
 	block, err := client.GetBlockByNum(num)
 	if err != nil {
-		fmt.Println(err)
+		// fmt.Println(err)
 		return
 	}
 
@@ -132,7 +132,7 @@ func (c *Crawler) extractOurTransactionsFromBlock(block *api.BlockExtention, cur
 
 		// if transaction is not success
 		if transaction.Ret[0].ContractRet != core.Transaction_Result_SUCCESS {
-			fmt.Println("transaction is not success")
+			// fmt.Println("transaction is not success")
 			continue
 		}
 
