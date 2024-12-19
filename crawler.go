@@ -27,12 +27,13 @@ type CrawlResult struct {
 }
 
 type CrawlTransaction struct {
-	TxId          string
-	Confirmations int64
-	FromAddress   string
-	ToAddress     string
-	Amount        int64
-	Symbol        string
+	TxId            string
+	Confirmations   int64
+	FromAddress     string
+	ToAddress       string
+	Amount          int64
+	Symbol          string
+	ContractAddress string
 }
 
 func (c *Crawler) ScanBlocks(count int) ([]CrawlResult, error) {
@@ -233,11 +234,12 @@ func (c *Crawler) prepareTrc20Transaction(t *api.TransactionExtention, contract 
 	symbol, _ := token.GetSymbol(c.Node, fromAddress)
 
 	return &CrawlTransaction{
-		TxId:        hexutil.Encode(t.GetTxid())[2:],
-		FromAddress: fromAddress,
-		ToAddress:   toAddress,
-		Amount:      tokenTransferData.Value.Int64(),
-		Symbol:      symbol,
+		TxId:            hexutil.Encode(t.GetTxid())[2:],
+		FromAddress:     fromAddress,
+		ToAddress:       toAddress,
+		Amount:          tokenTransferData.Value.Int64(),
+		Symbol:          symbol,
+		ContractAddress: contractAddress,
 	}
 }
 
